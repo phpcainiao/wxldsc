@@ -1,7 +1,6 @@
 // pages/order/confirm/confirm.js
 var app = getApp(); 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(111)
     console.log(options)
     let that = this;
     wx.request({
@@ -24,11 +24,10 @@ Page({
       dataType:'json',
       data: { goodsId: options.goodsId,skey:options.skey,num:options.num},
       success:function(res){
+        console.log(res)
         var data = res.data.goodsInfo;
         var totalprice = 0;
         for (var i = 0; i < data.length; i++) {
-          var arr = data[i]['good_image'].split(',');
-          data[i]['good_image'] = arr[0];
           totalprice += data[i]['price'];
         }
         that.setData({
@@ -44,14 +43,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**

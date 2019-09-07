@@ -30,6 +30,7 @@ Page({
     })
   },
   bindpay(e) {
+    app.checkLogin();
     let that = this;
     var flag = e.currentTarget.dataset.index;
     that.setData({
@@ -110,12 +111,14 @@ Page({
       })
     }
   },
+  /*添加购物车  立即支付 */
   qdbutton: function (e) {
     let that = this;
     var flag = that.data.flag;
     var goodsId = that.data.goodId;
     var skey = wx.getStorageSync('skey');
     var num = that.data.number;
+    var cateflag = that.data.cateflag;
     if (flag == 'pay') {
       wx.navigateTo({
         url: '/pages/order/confirm/confirm?skey=' + skey + '&goodsId=' + goodsId + '&num=' + num,
@@ -125,9 +128,12 @@ Page({
       var num = that.data.number;
       wx.request({
         url: that.data.url + '/api/order/addCart',
-        data: { skey: skey, goodsId: goodsId, num: num },
+        data: { skey: skey, goodsId: goodsId, num: num,cateval:cateflag.join(',')},
         method: 'post',
         success(res) {
+          that.setData({
+            displayStatus: 'none'
+          });
           if (res.data.code) {
             wx.showToast({
               title: res.data.msg

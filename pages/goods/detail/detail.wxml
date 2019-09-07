@@ -7,8 +7,11 @@
   </block>
 </swiper>
 <view class='summary'>
-  <text class='title'>{{goods.title}}</text>
   <text class='price'>￥ {{goods.price}}</text>
+  <text class='title'>{{goods.title}}</text>
+</view>
+<view class='summary'>
+  <text class='attr'>选择 颜色 尺码</text>
 </view>
 <view class="detail">
 	<image wx:for="{{goods.images}}" src="{{url}}{{item}}" wx:key=""/>

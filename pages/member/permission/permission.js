@@ -81,8 +81,6 @@ Page({
               data: { code: res.code, encryptedData: e.detail.encryptedData, iv: e.detail.iv, signature: e.detail.signature, skey: skey},
               method:'post',
               success:function(msg){
-                console.log(444)
-                console.log(msg)
                 app.globalData.userInfo = e.detail.userInfo
                 wx.setStorage({
                   key: 'skey',
