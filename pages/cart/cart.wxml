@@ -1,0 +1,63 @@
+<!--pages/cart/cart.wxml-->
+<view class='list'>
+<view class='carts-list' wx:for="{{list}}" wx:key='' wx:for-index="key">
+  <view class='shopName'>
+    <icon type="{{item.shopChecked ? 'success_circle' : 'circle'}}" size='18' bindtap='bindRadio' data-key="{{key}}"/>
+    <text>{{item.shopName}} <block>></block></text>
+  </view>
+  <view class='shopCartList' wx:for="{{item.detail}}" wx:for-item="items" wx:key='' wx:for-index="index">
+    <icon type="{{items.checked ? 'success_circle' : 'circle'}}" size='18' bindtap='bindOneRadio' data-index="{{index}}" data-key="{{key}}"/>
+    <image src='../../images/cart03.jpg' />
+    <view class='cartDetail'>
+      <text class='title'>{{items.title}}</text>
+      <text class='attr' bindtap='showAttr'>{{mainAttr}}</text>
+      <view class='summary'>
+        <text class='price'>￥ {{items.price}}</text>
+        <view class='numTotal'>
+          <text class='jian' catchtap='bindJian' data-index="{{index}}" data-key="{{key}}">-</text>
+          <input type='number' value="{{items.number}}"/>
+          <text class='jia' catchtap='bindJia' data-index="{{index}}" data-key="{{key}}">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
+<view class='bottom'>
+  <view bindtap='bindSelectAll' class='select-and-amount'>
+    <icon type="{{selectAllStatus ? 'success_circle' : 'circle'}}" size='18'/>
+    <text>全选 ￥{{totalMoney}}</text>
+  </view>
+  <view class='button' bindtap="bindCheckout">立即结算</view>
+</view>
+<!-- 弹出框 -->
+<view class='tck' style='display:{{displayStatus}};'>
+  <view class='tck-tm'></view>
+  <view class='main'>
+    <view class='top'>
+      <image src='../../images/tck01.jpg'/>
+      <view class='topDetail'>
+        <text>￥99.00</text>
+        <text>库存49511件</text>
+        <text>已选 {{selectAttr}}</text>
+      </view>
+      <icon type='cancel' size='20' color='#999' bindtap='closeCurrentPage'/>
+    </view>
+    <!-- middle -->
+    <view class='middle'>
+      <view class='colorTitle'>颜色分类</view>
+      <view class='cate'>
+        <view wx:for="{{attr}}" wx:key='' wx:for-index="index"  data-index="{{index}}" class='colorCat' bindtap='bindAttr' style="{{index == key ? 'background:#fbe9e5;color:#fe3f1a;border:1px solid #fe3f1a;' : 'background:#eee' }}">
+          <image src='{{item.src}}'/>
+          <text>{{item.info}}</text>
+        </view>
+        <!-- 清除浮动 -->
+        <view class='clear'></view>
+      </view>
+    </view>
+    <!-- 确定按钮 -->
+    <view class='bottom-qd'>
+          <view class='qd' bindtap='qdbutton'>确定</view>
+    </view>
+  </view>
+</view>

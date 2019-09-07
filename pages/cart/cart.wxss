@@ -1,0 +1,237 @@
+/* pages/cart/cart.wxss */
+page{
+  background: #eee;
+}
+.carts-list{
+  margin: 30rpx;
+  background: white;
+  border-radius: 30rpx;
+}
+.shopName{
+  padding: 30rpx 0 0 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+.shopName icon{
+  display: block;
+}
+.shopName text{
+  display: block;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+.shopName text block{
+  color: #999;
+}
+.cartDetail{
+  display: flex;
+  flex-direction: column;
+  margin: 0 30rpx 0 20rpx;
+  font-size: 28rpx;
+}
+.cartDetail .title{
+  display: block;
+  padding-bottom: 10rpx;
+}
+.cartDetail .attr{
+  display: block;
+  background: #eee;
+  padding: 5rpx;
+}
+.shopCartList{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  width: 100%;
+  padding-bottom: 30rpx;
+  align-items: center;
+}
+.shopCartList icon{
+  display: block;
+  margin-left: 30rpx;
+}
+.shopCartList image{
+  width:150rpx;
+  height:150rpx;
+  margin-left: 20rpx;
+  border-radius: 10rpx;
+  display: block;
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #eee;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: white;
+}
+.select-and-amount{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.select-and-amount icon{
+  display: block;
+  margin-left: 30rpx;
+}
+.select-and-amount text{
+  display: block;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+}
+.button{
+  background: #f60;
+  color: white;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  position: fixed;
+  right: 0;
+}
+.summary .price{
+  display: block;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.summary{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10rpx;
+  justify-content:space-between;
+}
+.summary .numTotal{
+ border: 1px solid #ccc;
+ display: flex;
+ flex-direction: row;
+ border-radius: 3rpx;
+ height: 60rpx;
+ line-height: 60rpx;
+ /* position: fixed;
+ right: 60rpx; */
+}
+.numTotal .jian{
+  display: block;
+   width: 50rpx;
+   text-align: center;
+}
+.numTotal .jia{
+  display: block;
+  width: 50rpx;
+  text-align: center;
+}
+.numTotal input{
+  width: 50rpx;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* 弹出框部分 */
+.tck{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tck .tck-tm{
+  height: 20%;
+}
+.tck .main{
+  height: 80%;
+  background: white;
+  border-top-left-radius:30rpx;
+  border-top-right-radius: 30rpx;
+}
+.tck .top{
+  margin: 0 30rpx;
+  padding-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+.tck .top image{
+  width: 240rpx;
+  height: 260rpx;
+}
+.topDetail{
+  display: flex;
+  flex-direction: column;
+  margin: 30rpx 0 0 30rpx;
+  /*line-height: 60rpx;*/
+}
+.topDetail text:first-child{
+  display: block;
+  color: orangered;
+  font-size: 36rpx;
+  margin-bottom: 15rpx;
+}
+.topDetail text:nth-child(2){
+  display: block;
+  color: #ccc;
+  font-size: 24rpx;
+  margin-bottom: 15rpx;
+}
+.topDetail text:nth-child(3){
+  display: block;
+  font-size: 30rpx;
+}
+.top icon{
+  position: fixed;
+  right: 30rpx;
+}
+.middle{
+  margin-top: 50rpx;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30rpx;
+}
+.middle .colorTitle{
+  margin-top: 80rpx;
+  font-size: 34rpx;
+  margin: 30rpx 0 0 30rpx;
+}
+.cate{
+  margin-left: 30rpx;
+}
+.middle .colorCat{
+   margin: 20rpx 20rpx 0 0;
+   float:left;
+   border-radius: 10rpx;
+   padding: 10rpx;
+   display: flex;
+   align-items: center;
+   border: 1px solid white;
+}
+.colorCat image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.colorCat text{
+   font-size: 28rpx;
+}
+.clear{
+  clear: both;
+}
+.bottom-qd{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  display: flex;
+  justify-content: center;/*水平居中*/
+  padding-top: 15rpx;
+  border-top: 1px solid #eee;
+}
+.bottom-qd .qd{
+  margin: 0 30rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: orangered;
+  border-radius: 40rpx;
+  text-align: center;
+  color: white;
+  font-size: 32rpx;
+}

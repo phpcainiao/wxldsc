@@ -1,0 +1,16 @@
+/* pages/member/permission/permission.wxss */
+page{
+  background: white;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+.last{
+  color: #444;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+}

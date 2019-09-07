@@ -1,0 +1,14 @@
+<!--pages/member/feedback/feedback.wxml-->
+<form bindsubmit="formSubmit">
+<view class='title'>
+  <text style="{{key == 0 ? 'border-bottom:1px solid red' : ''}}" bindtap='bindTitle' data-index='0'>意见反馈</text>
+  <text style="{{key == 1 ? 'border-bottom:1px solid red' : ''}}" bindtap='bindTitle' data-index='1'>历史反馈</text>
+</view>
+<view class='phone'>
+  <input type='text' placeholder='请输入电话号码' placeholder-style="font-size:12px"/>
+</view>
+<view class='edit'>
+  <editor placeholder="反馈字数不超多140字" show-img-size show-img-toolbar></editor>
+</view>
+<button form-type="submit" type='warn'>提交</button>
+</form>

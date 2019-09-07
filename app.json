@@ -1,0 +1,57 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/goods/detail/detail",
+    "pages/order/confirm/confirm",
+    "pages/cart/cart",
+    "pages/order/list/list",
+    "pages/goods/list/list",
+    "pages/member/permission/permission",
+    "pages/member/feedback/feedback",
+    "pages/member/history/history",
+    "pages/address/list/list",
+    "pages/member/index/index",
+    "pages/category/category",
+    "pages/address/add/add"
+  ],
+  "permission":{      
+    "scope.userLocation":{
+      "desc":"小程序需要获取您的位置信息"
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff314b",
+    "navigationBarTitleText": "灵动云商",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath":"./images/icon_home.png",
+        "selectedIconPath":"./images/icon_home_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "./images/icon_cate.png",
+        "selectedIconPath": "./images/icon_cate_selected.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "./images/icon_cart.png",
+        "selectedIconPath": "./images/icon_cart_selected.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/member/index/index",
+        "iconPath": "./images/icon_member.png",
+        "selectedIconPath": "./images/icon_member_selected.png",
+        "text": "我"
+      }
+    ]
+  }
+}

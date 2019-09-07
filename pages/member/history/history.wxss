@@ -1,0 +1,35 @@
+/* pages/history/history.wxss */
+page{
+  background: #eee;
+}
+.listBox{
+  display: flex;
+  flex-wrap: wrap;
+}
+.date{
+  color: #666;
+  font-size: 12px;
+  display: block;
+  padding: 10px 0 10px 5px;
+}
+.list{
+  width: 100px;
+  height: 100px;
+  background: white;
+  text-align: center;
+  margin-left: 5px;
+}
+.list image{
+  width: 80px;
+  height: 80px;
+}
+.list text{
+  display: block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  background: white;
+  font-size: 12px;
+  text-align: left;
+  color: red;
+}

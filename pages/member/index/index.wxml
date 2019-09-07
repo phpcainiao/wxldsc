@@ -1,0 +1,44 @@
+<view class='content' style='height:{{sidebarHeight}}px'>
+  <!-- 头像 昵称 -->
+  <view class='personal'>
+    <image src="{{avatar}}"/>
+    <text bindtap='bindLogin'>{{nickname}}</text>
+  </view>
+  <!-- 我的订单 -->
+  <view class='order'>
+    <view class='myOrder'>
+      <text class='firText'>我的订单</text>
+      <text class='lastText' bindtap='allOrders' data-index='0'>查看全部订单 〉</text>
+    </view>
+    <view class='orderDetail'>
+      <view class='detail' wx:for="{{detail}}" wx:key='' wx:for-index="index" data-index="{{index+1}}" bindtap='allOrders'>
+        <image src="{{item.src}}"/>
+        <text>{{item.text}}</text>
+      </view>
+      <view class='detail'>
+        <image src='/images/tk.png'/>
+        <text>退款</text>
+      </view>  
+    </view>
+  </view>
+  <!-- 常用功能 -->
+  <view class='common'>
+    <view class='myOrder'>
+      <text class='firText'>常用功能</text>
+    </view>
+    <view class='commonDetail'>
+      <view class='commonDetailList' bindtap='bindAddress'>
+        <image src='/images/address.png'/>
+        <text>收货地址</text>
+      </view>
+      <view class='commonDetailList' bindtap='bindHistory'>
+        <image src='/images/history.png'/>
+        <text>我的足迹</text>
+      </view>
+      <view class='commonDetailList' bindtap='bindFeek'>
+        <image src='/images/suggest.png'/>
+        <text>意见反馈</text>
+      </view>
+    </view>
+  </view>
+</view>

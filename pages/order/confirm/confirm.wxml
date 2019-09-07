@@ -1,0 +1,34 @@
+<!--pages/order/confirm/confirm.wxml-->
+<view class='addaddress' wx:if="{{address.length==0}}">
+  <view class='firstview' bindtap='getphone'><image src='../../../images/wx.png' style="width:40rpx;height:40rpx;"/>　获取微信地址</view>
+  <view>
+    <text class='icon'>+</text><text class='text'>手动添加地址</text>
+  </view>
+</view>
+<view class='address' wx:if="{{address.length>0}}">
+  <view><text class='addinfo'>收件人：</text>{{address.receiver}}　　{{address.phone}}</view>
+  <view class='firview'><text class='addinfo'>收货地址：</text>{{address.area}}{{address.address}}</view>
+  <text class='arrow'></text>
+</view>
+<view class='main'>
+  <view class='shopInfo'>
+    <text class='firText'>店铺：米氏孕婴童店</text>
+  </view>
+  <view class='orderList' wx:for="{{goodsInfo}}" wx:key=''>
+    <image src='/images/attr01.jpg'></image>
+    <view class='title'>{{item.title}}</view>
+    <view class='price'>
+      <text class='black'>￥{{item.price}}</text>
+      <text class='gray'>x{{item.num}}</text>
+    </view>
+  </view>
+  <view class='remarks'>
+    <text class='addinfo'>备注留言：</text>
+    <input type='text' placeholder='建议输入内容与商家达成一致'/>
+  </view>
+  <view class='sum'>共1件商品 合计 ￥{{item.price}}</view>
+</view>
+<view class='bottom'>
+  <view class='priceview'><text class='bottext'>实付款：</text><text class='totalprice'>￥ {{totalprice}}</text></view>
+  <view class='button' bindtap="bindCheckout">立即结算</view>
+</view>

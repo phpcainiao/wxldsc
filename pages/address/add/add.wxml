@@ -1,0 +1,39 @@
+<!--pages/address/add/add.wxml-->
+<form bindsubmit="formSubmit">
+  <view class='section'>
+    <input type='input' placeholder='收货人' name='username'/>
+  </view>
+
+  <view class='section'>
+    <input type='number' placeholder='手机号码' pattern="\d*" name="tel"/>
+  </view>
+
+  <view class="areasection">
+    <picker
+      mode="region"
+      bindchange="bindRegionChange"
+      value="{{address}}"
+      name="address"
+    >
+      <view class="picker">
+        {{address}}
+      </view>
+    </picker>
+
+    <image src='/images/position.png' catchtap='getArea'/>
+  </view>
+
+  <view class='section'>
+    <input type='input' placeholder='详细地址：如道路、门牌号、小区' value="{{name}}" name="detailAddress"/>
+  </view>
+
+  <view class='section1'>
+    设为默认地址
+    <switch bindchange='switchChange' name="switch"/>
+  </view>
+
+  <view class='section2'>
+    <button size='mini' type='default' form-type="submit" plain="true">保存</button>
+  </view>
+</form>
+

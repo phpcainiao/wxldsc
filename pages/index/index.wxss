@@ -1,0 +1,82 @@
+/**index.wxss**/
+page{
+  background: #eee;
+}
+.search{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  padding: 8px;
+}
+.search input{
+  width: 88%;
+}
+.func-area{
+  display: flex;
+  flex-direction: row;
+  margin:20rpx 0;
+  padding-top:30rpx; 
+  background-color:white;
+}
+.func-area view{
+  width: 50%;
+  text-align: center;
+}
+.func-area view image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+}
+.func-area view text{
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36rpx;
+  color: #999;
+}
+.orange{
+  background-color: orange;
+}
+.blue{
+  background-color: blue;
+}
+
+container-goods{
+  margin-top: 10rpx;
+}
+.caption{
+  display: block;
+  font-size: 32rpx;
+  padding: 10rpx 0;
+  background-color:white;
+}
+.main{
+  background: #eee;
+}
+.main-goods{
+  background: white;
+  width: 40%;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 4px;
+}
+.avator{
+  width: 200rpx;
+  height:200rpx;
+}
+.title{
+  display: block;
+  color:#999;
+  font-size: 28rpx;
+  height: 30px;
+}
+.price{
+  font-size: 30rpx;
+  color:red;
+}
+.sale{
+  font-size: 28rpx;
+  color:#999;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,6 @@
+<!--pages/member/permission/permission.wxml-->
+<view class='content' style='height:{{sidebarHeight}}px;'>
+  <text>灵动云商申请获取以下权限</text>
+  <text class='last'>获取你的公开信息（昵称、头像等）</text>
+  <button size='default' type='warn' lang='zh_CN' open-type='getUserInfo' bindgetuserinfo='bindgetuserinfo'>微信授权</button>
+</view>

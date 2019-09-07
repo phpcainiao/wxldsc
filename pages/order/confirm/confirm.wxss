@@ -1,0 +1,149 @@
+/* pages/order/confirm/confirm.wxss */
+page{
+  background: #eee;
+}
+.addaddress{
+  background: #fff;
+  padding: 5px 0 5px 5px;
+  font-size: 14px;
+}
+.addaddress .icon{
+  padding: 0 2px 0 2px;
+  border: 1px solid red;
+  border-radius: 20%;
+  color: red;
+}
+.text{
+  padding-left: 13px;
+  color: red;
+}
+.firstview{
+  padding-bottom: 10px;
+  color: green;
+}
+.address{
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 10px 20px 10px 10px;
+}
+.addinfo{
+  color: #999;
+}
+
+.arrow{
+width: 10px;
+height: 10px;
+border-top: 2px solid #ccc;
+border-right: 2px solid #ccc;
+position: absolute;
+right: 20rpx;
+transform: rotate(45deg);
+margin-top:30rpx;
+}
+.shopInfo{
+  margin: 15px 0 0 12px;
+  padding: 10px;
+  width:86%;
+  background: white;
+  display: flex;
+  flex-wrap:wrap;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+.shopInfo text{
+  display: block;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.firText{
+  font-weight: 600;
+}
+/* .secText{
+  color: #ff314b;
+  position: absolute;
+  right: 10px;
+  font-weight: 600;
+} */
+/* .lastText{
+  color: #999;
+} */
+.orderList{
+  width: 86%;
+  background: white;
+  margin: 0 0 0 12px;
+  padding: 10px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+.orderList image{
+  width: 80px;
+  height: 80px;
+}
+.title{
+  width: 59%;
+  font-weight: 600;
+  margin-left: 30px;
+}
+.price{
+  display: flex;
+  flex-direction: column;
+}
+.sum{
+  width: 86%;
+  background: white;
+  margin: 0 0 0 12px;
+  padding: 10px;
+  font-size: 12px;
+  text-align: right;
+  border-radius: 0 0 10px 10px;
+}
+.remarks{
+  width: 86%;
+  background: #fff;
+  margin: 0 0 0 12px;
+  padding: 10px 0 0 20px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+.remarks input{
+  display: inline-block;
+}
+.remarks text{
+  display: inline-block;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;  /*垂直居中*/
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+}
+.priceview{
+  font-family:Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+}
+.bottext{
+  font-size: 14px;
+}
+.totalprice{
+  font-size: 16px;
+  color: red;
+}
+.button{
+  background: #f60;
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 30rpx;
+  position: fixed;
+  right: 0;
+}

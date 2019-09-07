@@ -1,0 +1,69 @@
+<!--pages/goods/detail/detail.wxml-->
+<swiper indicator-indicator-dots='true' autoplay='true' style="height:700rpx;">
+  <block wx:for="{{goods.good_image}}" wx:key="">
+    <swiper-item>
+      <image src='{{url}}{{imgurl}}{{item}}' class="swiper-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class='summary'>
+  <text class='title'>{{goods.title}}</text>
+  <text class='price'>￥ {{goods.price}}</text>
+</view>
+<view class="detail">
+	<image wx:for="{{goods.images}}" src="{{url}}{{item}}" wx:key=""/>
+</view>
+<view class='footer'>
+  <view class='opt-buttons'>
+    <view class='button-group'>
+    <!-- 小程序客服会话按钮 -->
+      <contact-button class="contact-button" size="22" />
+      <text class="button-text">联系客服</text> 
+    </view>
+    <view class='button-group' bindtap='showCart' data-index="cart">
+      <image src="../../../images/icon_cart.png" class="button-image"/>
+      <text class='button-text'>加入购物车</text>
+    </view>
+  </view>
+  <button class="add-cart" bindtap="bindpay"  data-index="pay">立即支付</button>
+</view>
+<!-- 弹出框 -->
+<view class='tck' style='display:{{displayStatus}};'>
+  <view class='tck-tm'></view>
+  <view class='main'>
+    <view class='top'>
+      <image src="{{url}}{{imgurl}}{{goods.good_image[0]}}"/>
+      <view class='topDetail'>
+        <text>￥{{goods.price}}</text>
+        <text>库存{{goods.goods_stock}}件</text>
+        <text>{{cate}}</text>
+      </view>
+      <icon type='cancel' size='20' color='#999' bindtap='closeCurrentPage'/>
+    </view>
+    <!-- middle -->
+    <view class='middle' wx:for="{{attrinfo}}" wx:key='' wx:for-index="index1" data-index="{{index1}}"wx:for-item="items">
+      <view class='colorTitle'>{{items.attrname}}</view>
+      <view class='cate'>
+        <view wx:for="{{items.attrval}}" wx:key='' wx:for-index="index"  data-index="{{index}}" 
+        data-cateindex="{{index1}}" class='colorCat' bindtap='bindAttr' style="{{key[index1] == index ? 'background:#fbe9e5;color:#fe3f1a;border:1px solid #fe3f1a;' : 'background:#eee' }}">
+          <image src='{{item.src}}' style='width:50rpx;height:50rpx;' wx:if="{{item.src}}"/>
+          <text>{{item}}</text>
+        </view>
+        <!-- 清除浮动 -->
+        <view class='clear'></view>
+      </view>
+    </view>
+    <view class='btnsum'>
+      <view class='getnum'>购买数量</view>
+      <view class='numTotal'>
+        <text class='jian' catchtap='bindJian'>-</text>
+        <input type='number' value="{{number}}" bindblur='getnumber'/>
+        <text class='jia' catchtap='bindJia'>+</text>
+      </view>
+    </view>
+    <!-- 确定按钮 -->
+    <view class='bottom-qd'>
+      <view class='qd' bindtap='qdbutton'>确定</view>
+    </view>
+  </view>
+</view>

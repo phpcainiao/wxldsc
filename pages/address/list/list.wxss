@@ -1,0 +1,55 @@
+/* pages/address/list/list.wxss */
+page{
+  background: #eee;
+}
+.content{
+  margin-bottom: 10px;
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  background: white;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+.firText{
+  width: 70%;
+}
+.secText{
+  width: 70%;
+}
+.lastText{
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  color: #777;
+}
+.handle{
+  background: white;
+  font-size: 14px;
+  color: #777;
+  padding: 10px;
+  position: relative;
+}
+.moren{
+  padding-left: 5px;
+}
+.edit{
+  position: absolute;
+  right: 80px;
+}
+.del{
+  position: absolute;
+  right: 20px;
+}
+button{
+  width: 100%;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+}

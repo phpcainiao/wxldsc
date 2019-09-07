@@ -1,0 +1,23 @@
+<!--pages/order/list/list.wxml-->
+<!-- 订单状态选项 -->
+<view class='orderOption'>
+  <text wx:for="{{options}}" wx:key="" wx:for-index="key"  data-index="{{key}}" style="{{key==index ? 'border-bottom:2px solid #ff314b' : ''}}" bindtap='bindOpt'>{{item}}</text>
+</view>
+<view>
+<view class='main'>
+  <view class='shopInfo'>
+    <text class='firText'>店铺：米氏孕婴童店</text>
+    <text class='secText'>等待买家付款</text>
+    <text class='lastText'>订单编号：E201906231584565262656</text>
+  </view>
+  <view class='orderList'>
+    <image src='/images/attr01.jpg'></image>
+    <view class='title'>伊利优酸乳复活节阿海珐激昂的房间内的</view>
+    <view class='price'>
+      <text class='black'>￥46.00</text>
+      <text class='gray'>x1</text>
+    </view>
+  </view>
+  <view class='sum'>共1件商品 合计 ￥49.00</view>
+</view>
+</view>

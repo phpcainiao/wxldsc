@@ -1,0 +1,27 @@
+<!-- search -->
+<view class='search'>
+  <input type='text' placeholder='搜索内容'/>
+  <icon type='search'/>
+</view>
+<view class='container'>
+<!-- 左边 -->
+  <view class='sidebar' style='height:{{sidebarHeight}}px'>
+    <text wx:for="{{categories}}" wx:key="" wx:for-index="index" data-index="{{index}}" data-id="{{item.id}}" bindtap='topCategory' style="{{index == key ? 'color:#db4826' : 'color:black'}}">{{item.name}}</text>
+  </view>
+  <!-- 右边 -->
+  <view class='main' style='height:{{sidebarHeight}}px'>
+    <block wx:for="{{subCategories}}" wx:key="">
+      <view class='banner'>{{item.name}}</view>
+      <view class='gridview'>
+        <dl wx:for="{{item.childlist}}" wx:for-item='items' wx:key='' data-id="{{items.id}}" bindtap="navigateToList">
+          <dt>
+            <image src='{{url}}{{imgurl}}{{items.image}}'/>
+          </dt>
+          <dd>
+            <text>{{items.name}}</text>
+          </dd>
+        </dl>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,62 @@
+/*容器总体布局为左右两列*/
+page{
+  background: #eee;
+  height: 100%;
+}
+.search{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #e4e1e1;
+  padding: 8px;
+}
+.search input{
+  width: 88%;
+}
+.container {
+  display: flex;
+	flex-direction: row; 
+}
+/*侧边栏给予适当宽度*/
+.sidebar{
+  width: 80px;
+}
+
+.sidebar text{
+  display:block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: white;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 34rpx;
+}
+.main{
+  width: 100%;
+  margin:0 10px;
+  
+}
+.banner{
+  margin: 10px 0;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 32rpx;
+}
+.gridview{
+  padding: 15px 15px 15px 5px;
+  background: white;
+  border-radius: 30rpx;
+  display: flex;
+  flex-wrap: wrap;  /*flex布局，水平排列，自动换行*/
+}
+.gridview image{
+  height: 60px;
+  width: 60px;
+  margin-left: 13px;
+}
+.gridview text{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 26rpx;
+  display: block;
+  text-align: center;
+  padding: 5px 0 0 0;
+}

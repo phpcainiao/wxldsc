@@ -1,0 +1,27 @@
+<view class='content'>
+  <!-- 搜索条件 -->
+  <view class='select'>
+    <view class='com-selectBox'>
+      <view class='com-sContent' bindtap='selectToggle'>
+        <view class='com-sTxt' style="{{comText ? 'color:#ff314b;' : 'color:#000'}}">{{nowText}}</view>
+        <image src="{{comText ? '/images/select01.jpg' : '/images/select02.jpg'}}"  class='com-sImg'  animation="{{animationData}}"></image>
+      </view>
+      <view class='com-sList' wx:if="{{selectShow}}">
+        <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='' class='com-sItem' bindtap='setText' style="{{index == key ? 'color:#ff314b' : 'color: #000'}}">{{item}}</view>
+      </view>
+    </view>
+    <!-- 销量 -->
+    <view class='saleNum' bindtap='bindSale' style="{{saleFlag ? 'color:#ff314b' : 'color:#000'}}">销量</view>
+  </view>
+  <!-- 列表 -->
+  <view class='main'>
+    <view class='main-goods' wx:for="{{goodslist}}" wx:key="">
+        <image src='{{url}}{{imgurl}}{{item.good_image}}' class='avator'/>
+        <text class='title'>{{item.title}}</text>
+        <view>
+          <text class='price'>￥{{item.price}}</text>
+          <text class='sale'>已售{{item.sale_num}}件</text>
+        </view>
+      </view>
+    </view>
+  </view>

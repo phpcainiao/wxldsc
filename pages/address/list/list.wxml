@@ -1,0 +1,15 @@
+<!--pages/address/list/list.wxml-->
+<view class='content' wx:for="{{receiver}}" wx:key=''>
+  <view class='info'>
+    <text class='firText'>{{item.receiver}}，{{item.phone}}</text>
+    <text class='secText'>{{item.area}}{{item.address}}</text>
+    <text class='lastText'>×</text>
+  </view>
+  <view class='handle'>
+    <icon type="{{item.isflag == 1 ? 'success_circle' : 'circle'}}" size='15'/>
+    <text class='moren'>设为默认</text>
+    <text class='edit'>编辑</text>
+    <text class='del'>删除</text>
+  </view>
+</view>
+<button type='warn' bindtap='addAddress'>添加收货地址</button>

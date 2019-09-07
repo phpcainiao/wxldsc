@@ -1,0 +1,75 @@
+/* pages/order/list/list.wxss */
+page{
+  background: #eee;
+}
+.orderOption{
+  display: flex;
+  flex-direction: row;
+}
+.orderOption text{
+  display: block;
+  width: 20%;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+/* 订单信息 */
+.shopInfo{
+  margin: 15px 0 0 12px;
+  padding: 10px;
+  width:86%;
+  background: white;
+  display: flex;
+  flex-wrap:wrap;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+.shopInfo text{
+  display: block;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+.firText{
+  font-weight: 600;
+}
+.secText{
+  color: #ff314b;
+  position: absolute;
+  right: 10px;
+  font-weight: 600;
+}
+.lastText{
+  color: #999;
+}
+.orderList{
+  width: 86%;
+  background: white;
+  margin: 0 0 0 12px;
+  padding: 10px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+}
+.orderList image{
+  width: 80px;
+  height: 80px;
+}
+.title{
+  width: 59%;
+  font-weight: 600;
+  margin-left: 30px;
+}
+.price{
+  display: flex;
+  flex-direction: column;
+}
+.sum{
+  width: 86%;
+  background: white;
+  margin: 0 0 0 12px;
+  padding: 10px;
+  font-size: 12px;
+  text-align: right;
+  border-radius: 0 0 10px 10px;
+}

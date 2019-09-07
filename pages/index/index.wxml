@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<!-- search -->
+<view class='search'>
+  <input type='text' placeholder='搜索内容'/>
+  <icon type='search'/>
+</view>
+<!-- banner -->
+<swiper indicator-dots="true" autoplay="true">
+  <block wx:for="{{banner}}" wx:key=''>
+    <swiper-item>
+      <image src='{{url}}{{imgurl}}{{item.image}}'/>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 中间模块 -->
+<view class='func-area'>
+  <view bindtap='bindCate'>
+    <image src='../../images/icon_all.png' class='orange'/>
+    <text>全部分类</text>
+  </view>
+  <view>
+    <image src='../../images/icon_shopping.png' class='blue'/>
+    <text>我的订单</text>
+  </view>
+</view>
+<!-- 热卖推荐 -->
+<view class='container-goods'>
+  <text class='caption'>热卖推荐</text>
+  <view class='main'>
+    <view class='main-goods' wx:for="{{goods}}" wx:key="" bindtap='showDetail' data-index="{{index}}">
+      <image src='{{url}}{{imgurl}}{{item.good_image}}' class='avator'/>
+      <text class='title'>{{item.title}}</text>
+      <view>
+        <text class='price'>￥{{item.price}}</text>
+        <text class='sale'>已售99件</text>
+      </view>
+    </view>
+  </view>
+</view>
