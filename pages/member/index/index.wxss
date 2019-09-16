@@ -1,5 +1,5 @@
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .content{
   height: 100%;

@@ -71,6 +71,7 @@ Page({
     let that = this;
     var skey = wx.getStorageSync('skey');  //判断是否是首次登录
     if(e.detail.userInfo){
+      console.log(e)
       //用户按了允许按钮
       wx.login({
         success(res){
@@ -78,10 +79,28 @@ Page({
             //console.log(res)
             wx.request({
               url: that.data.url +'/api/auth/wxLogin',
-              data: { code: res.code, encryptedData: e.detail.encryptedData, iv: e.detail.iv, signature: e.detail.signature, skey: skey},
+              data: {
+                code: res.code,
+                // encryptedData: e.detail.encryptedData, 
+                // iv: e.detail.iv, 
+                // signature: e.detail.signature,
+                nickname:e.detail.userInfo.nickName,
+                gender: e.detail.userInfo.gender,
+                city: e.detail.userInfo.city,
+                province: e.detail.userInfo.province,
+                country: e.detail.userInfo.country,
+                avatarUrl: e.detail.userInfo.avatarUrl
+                },
               method:'post',
               success:function(msg){
-                app.globalData.userInfo = e.detail.userInfo
+                if (msg.data[0] == '<'){
+                  wx.showToast({
+                    title: '服务器错误！',
+                    icon: 'none'
+                  });
+                  return;
+                }
+                app.globalData.userInfo = e.detail.userInfo;
                 wx.setStorage({
                   key: 'skey',
                   data: msg.data[0]

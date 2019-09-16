@@ -1,59 +1,88 @@
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
-.content{
+#swiper-tab{
   background: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
-.select{
-  display: flex;
+.swiper-tab{
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: white;
+}
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  color: #666;
+  border-bottom: 0rpx;
+  position: relative;
+}
+ 
+.swiper-tab-list i {
+  position: absolute;
+  bottom: 30%;
+  right: 14%;
+  width: 0px;
+  height: 0px;
+  border: 5px solid #4e4e4e;
+  border-top-color: #4e4e4e;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+ 
+.on {
+  color: #f63;
+  border-bottom: 2rpx solid #f63;
+}
+ 
+.on i {
+  border: 5px solid #f63;
+  border-top-color: #f63;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+/* 下拉切换中的切换 */
+ 
+.nav {
+  width: 20%;
+  height: 100rpx;
+  float: left;
   flex-direction: row;
 }
-.com-selectBox{
-  height: 40px;
-  width: 50%;
-}
-.com-sContent{
-  height: 40px;
-  width: 50%;
-  line-height: 40px;
-}
-.com-sTxt{
-  height: 40px;
-  width: 130px;
+
+.default {
+  width: 100%;
+  line-height: 100rpx;
   text-align: center;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 14px;
-  color: #ff314b;
-}
-.com-sImg{
-  height: 13px;
-  width: 13px;
-  position: fixed;
-  top: 14px;
-  left: 100px;
-}
-.com-sList{
-  position: relative;
-  background: white;
-  z-index: 2;
-  overflow: auto;
-}
-.com-sItem{
-  height: 30px;
-  line-height: 30px;
-  text-align: left;
-  margin-left: 20px;
-  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  font-size: 28rpx;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+ 
+.red {
+  width: 100%;
+  float: right;
+  line-height: 100rpx;
+  text-align: center;
+  color: #f63;
+  font-weight: bold;
+  font-size: 28rpx;
 }
 .main-goods{
-  width: 45%;
-  display: inline-block;
+  width: 41%; 
+  display:inline-block;
   z-index: 1;
   border-radius: 15px;
   background: white;
   margin: 8px;
+  padding: 5px;
 }
 .avator{
   width: 300rpx;
@@ -63,6 +92,7 @@ page{
   display: block;
   color:#999;
   font-size: 28rpx;
+  margin-bottom: 6px;
 }
 .price{
   font-size: 30rpx;
@@ -73,16 +103,8 @@ page{
   color:#999;
   margin-left: 20rpx;
 }
-/* 销量 */
-.saleNum{
-  height: 40px;
-  width: 50%;
-  line-height: 40px;
-  text-align: center;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 14px;
-  border-left: 3px solid #ccc;
-}
+
 .main{
+  margin-top: 36px;
   background: #eee;
 }

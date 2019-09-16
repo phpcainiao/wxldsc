@@ -1,6 +1,6 @@
 /**index.wxss**/
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .search{
   width: 100%;
@@ -62,8 +62,8 @@ container-goods{
   padding: 4px;
 }
 .avator{
-  width: 200rpx;
-  height:200rpx;
+  width: 300rpx;
+  height:300rpx;
 }
 .title{
   display: block;

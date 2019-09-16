@@ -1,6 +1,6 @@
 /* pages/member/feedback/feedback.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .title{
   width: 100%;

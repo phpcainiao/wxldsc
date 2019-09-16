@@ -28,7 +28,7 @@
   <text class='caption'>热卖推荐</text>
   <view class='main'>
     <view class='main-goods' wx:for="{{goods}}" wx:key="" bindtap='showDetail' data-index="{{index}}">
-      <image src='{{url}}{{imgurl}}{{item.good_image}}' class='avator'/>
+      <image src='{{url}}{{imgurl}}{{item.image}}' class='avator'/>
       <text class='title'>{{item.title}}</text>
       <view>
         <text class='price'>￥{{item.price}}</text>

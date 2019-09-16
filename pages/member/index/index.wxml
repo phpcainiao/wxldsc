@@ -2,7 +2,7 @@
   <!-- 头像 昵称 -->
   <view class='personal'>
     <image src="{{avatar}}"/>
-    <text bindtap='bindLogin'>{{nickname}}</text>
+    <text bindtap='{{flag ? bindLogin : 0}}'>{{nickname}}</text>
   </view>
   <!-- 我的订单 -->
   <view class='order'>

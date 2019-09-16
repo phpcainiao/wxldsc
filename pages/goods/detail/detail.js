@@ -1,5 +1,6 @@
 // pages/goods/detail/detail.js
 var app = getApp();  
+var common = require('../../../utils/common.js');
 Page({
 
   /**
@@ -13,7 +14,6 @@ Page({
     goods: [],
     cate: '选择 ',
     cateflag:[],
-    flag: '',/* 弹出框购物车，立即支付标识*/
     galleryHeight: getApp().screenWidth,
     attrinfo: [],
     key: [],
@@ -21,21 +21,64 @@ Page({
     selectAttr: 'K303LB（加热）',
     number: 1
   },
-  showCart: function (e) {
+  bindChooseAttr(e) {
+    let that = this;
+    var key = that.data.key;
+    if (key.length != 2) {
+      wx.showToast({
+        title: '请先选择商品属性~',
+        icon:'none'
+      });
+      return false;
+    }
+    return true;
+  },
+  bindtkattr: function (e) {
     let that = this;
     var flag = e.currentTarget.dataset.index;
     that.setData({
-      displayStatus: 'block',
-      flag: flag
+      displayStatus: 'block'
+    })
+  },
+  addCart:function(){
+    let that = this;
+    var res = that.bindChooseAttr();
+    if (!res){
+      return;
+    }
+    common.checkLogin();
+    var goodsId = that.data.goodId;
+    var skey = wx.getStorageSync('skey');
+    var num = that.data.number;
+    var cateflag = that.data.cateflag;
+    wx.request({
+      url: that.data.url + '/api/order/addCart',
+      data: { skey: skey, goodsId: goodsId, num: num, cateval: cateflag.join(',') },
+      method: 'post',
+      success(res) {
+        that.setData({
+          displayStatus: 'none'
+        });
+        if (res.data.code) {
+          wx.showToast({
+            title: res.data.msg
+          });
+          return;
+        }
+      }
     })
   },
   bindpay(e) {
-    app.checkLogin();
     let that = this;
-    var flag = e.currentTarget.dataset.index;
-    that.setData({
-      displayStatus: 'block',
-      flag: flag
+    var res = that.bindChooseAttr();
+    if(!res){
+      return;
+    }
+    common.checkLogin();
+    var goodsId = that.data.goodId;
+    var num = that.data.number;
+    wx.navigateTo({
+      url: '/pages/order/confirm/confirm?&goodsId=' + goodsId + '&num=' + num
     })
   },
   closeCurrentPage: function () {
@@ -61,7 +104,7 @@ Page({
       }
     }
     cateflag[cateindex] = attrinfo[cateindex]['attrval'][index];
-    if (key.length == 2) {
+    if (key.length == 2 && key[0] != undefined) {
       cate = '已选 ' + cateflag.join(',');
     }
     that.setData({
@@ -108,39 +151,6 @@ Page({
       num++;
       that.setData({
         number: num
-      })
-    }
-  },
-  /*添加购物车  立即支付 */
-  qdbutton: function (e) {
-    let that = this;
-    var flag = that.data.flag;
-    var goodsId = that.data.goodId;
-    var skey = wx.getStorageSync('skey');
-    var num = that.data.number;
-    var cateflag = that.data.cateflag;
-    if (flag == 'pay') {
-      wx.navigateTo({
-        url: '/pages/order/confirm/confirm?skey=' + skey + '&goodsId=' + goodsId + '&num=' + num,
-      })
-    }
-    if (flag == 'cart') {
-      var num = that.data.number;
-      wx.request({
-        url: that.data.url + '/api/order/addCart',
-        data: { skey: skey, goodsId: goodsId, num: num,cateval:cateflag.join(',')},
-        method: 'post',
-        success(res) {
-          that.setData({
-            displayStatus: 'none'
-          });
-          if (res.data.code) {
-            wx.showToast({
-              title: res.data.msg
-            });
-            return;
-          }
-        }
       })
     }
   },

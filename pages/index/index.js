@@ -19,7 +19,6 @@ Page({
   onLoad: function (options) {
     /*获取幻灯片信息 */
     let that = this;
-    var num = that.data.count;
     wx.request({
       url: that.data.url + '/api/index/getBanner',
       header: {
@@ -36,25 +35,26 @@ Page({
       }
     }),
     /*获取第一次热卖商品信息 */
-    wx.request({
-      url: that.data.url + '/api/index/getHotGoods?page='+num,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      dataType: 'json',
-      success(res) {
-        if(res.data.code == 1){
-          var data = res.data.hotList.data;
-          for (var i = 0; i < data.length; i++) {
-            var arr = data[i]['good_image'].split(',');
-            data[i]['good_image'] = arr[0];
-          }
-          that.setData({
-            goods: data
-          })
-        }
-      }
-    })
+    that.getHotGoods();
+    // wx.request({
+    //   url: that.data.url + '/api/index/getHotGoods?page='+num,
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   dataType: 'json',
+    //   success(res) {
+    //     if(res.data.code == 1){
+    //       var data = res.data.hotList.data;
+    //       for (var i = 0; i < data.length; i++) {
+    //         var arr = data[i]['good_image'].split(',');
+    //         data[i]['good_image'] = arr[0];
+    //       }
+    //       that.setData({
+    //         goods: data
+    //       })
+    //     }
+    //   }
+    // })
   },
 
   /**
@@ -97,28 +97,10 @@ Page({
    */
   onReachBottom: function () {
     let that = this;
-    var yuan_goods = that.data.goods;
     var num = that.data.count;
     num = num + 1;
-    wx.request({
-      url: that.data.url + '/api/index/getHotGoods?page=' + num,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      dataType: 'json',
-      success(res) {
-        if (res.data.code == 1) {
-          var data = res.data.hotList.data;
-          for (var i = 0; i < data.length; i++) {
-            var arr = data[i]['good_image'].split(',');
-            data[i]['good_image'] = arr[0];
-          }
-          
-          that.setData({
-            goods: yuan_goods.concat(data)  //合并数组
-          })
-        }
-      }
+    that.setData({
+      count:num
     })
   },
 
@@ -142,6 +124,34 @@ Page({
       url: '../category/category',
       fail:function(e){
         console.log(e)
+      }
+    })
+  },
+  getHotGoods:function(){
+    let that = this;
+    var num = that.data.count;
+    var yuan_goods = that.data.goods;
+    wx.request({
+      url: that.data.url + '/api/index/getHotGoods?page=' + num,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      dataType: 'json',
+      success(res) {
+        if (res.data.code == 1) {
+          var data = res.data.hotList.data;
+          var len = 10;
+          for (var i = 0; i < data.length; i++) {
+            var title = data[i]['title'];
+            data[i]['title'] = title.length <= len ? title : title.substr(0, len) + '...';
+          }
+          if(num>1){
+            data = yuan_goods.concat(data);
+          }
+          that.setData({
+            goods:data //合并数组
+          })
+        }
       }
     })
   }

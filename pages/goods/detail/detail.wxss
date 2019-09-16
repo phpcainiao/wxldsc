@@ -1,6 +1,6 @@
 /* pages/goods/detail/detail.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .swiper-image{
   width: 100%;
@@ -11,6 +11,11 @@ page{
   flex-direction: column;
   margin: 10rpx 0;
   background:white;
+}
+.attr{
+  margin: 5px;
+  font-size: 14px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .price{
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

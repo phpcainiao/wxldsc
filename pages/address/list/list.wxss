@@ -1,6 +1,6 @@
 /* pages/address/list/list.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .content{
   margin-bottom: 10px;

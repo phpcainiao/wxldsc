@@ -7,21 +7,73 @@ Page({
   data: {
     url: app.globalData.url,  //获取全局变量
     imgurl: '/static/uploads/',
+    currentTab:0,
+    displays:'none',
+    selected:true,
+    selected1:false,
+    selected2:false,
     count: 1, //请求的页数
     cat_id:0, //当前分类id
-    selectShow: false,//初始option不显示
     nowText: "综合",//初始内容
     key:0,
-    saleFlag:false,
-    comText:true,
-    animationData:{},
-    propArray:['综合','价格升高','价格降低'],
-    goodslist: [
-      { id: 1, title: '浪莎男士袜子棉袜透气中筒袜', price: '19.8', avator: '/images/good01.jpg' },
-      { id: 2, title: '浪莎男士袜子棉袜透气中筒袜', price: '19.8', avator: '/images/good02.jpg' },
-      { id: 3, title: '浪莎男士袜子棉袜透气中筒袜', price: '19.8', avator: '/images/good03.jpg' },
-      { id: 4, title: '浪莎男士袜子棉袜透气中筒袜', price: '19.8', avator: '/images/good04.jpg' }
-    ]
+    goodslist: []
+  },
+  tabNav:function(e){
+    let that = this;
+    var current = e.currentTarget.dataset.current;
+    if(current == 0){
+      that.setData({
+        currentTab: 0,
+        displays:'block'
+      })
+    }else{
+      //销量
+      that.setData({
+        currentTab:1,
+        selected: false,
+        selected1: false,
+        selected2: false,
+        displays: 'none',
+        nowText: '综合',
+      }),
+      that.getGoodsList();
+    }
+  },
+  selected:function(){
+    let that = this;
+    that.setData({
+      selected:true,
+      selected1:false,
+      selected2:false,
+      displays:'none',
+      nowText:'综合',
+      key:0
+    }),
+    that.getGoodsList();
+  },
+  selected1: function () {
+    let that = this;
+    that.setData({
+      selected: false,
+      selected1: true,
+      selected2: false,
+      displays: 'none',
+      nowText: '价格升高',
+      key: 1
+    }),
+    that.getGoodsList();
+  },
+  selected2: function () {
+    let that = this;
+    that.setData({
+      selected: false,
+      selected1: false,
+      selected2: true,
+      displays: 'none',
+      nowText: '价格降低',
+      key: 2
+    }),
+    that.getGoodsList();
   },
 
   /**
@@ -29,32 +81,11 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var num = that.data.count;
     var id = options.id;
     that.setData({
       cat_id:id
     })
-    wx.request({
-      url: that.data.url + '/api/index/getGoodsList?id=' + id + '&page='+num,
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      dataType: 'json',
-      success(res) {
-        console.log(111)
-        console.log(res)
-        var data = res.data.data;
-        for(var i=0;i<data.length;i++){
-          var good_image = data[i]['good_image'].split(',');
-          data[i]['good_image'] = good_image[0];
-        }
-        
-        console.log(data)
-        that.setData({
-          goodslist: data
-        })
-      }
-    })
+    that.getGoodsList();
   },
 
   /**
@@ -96,32 +127,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function (options) {
-    console.log(7878);
-    console.log(options)
-    // let that = this;
-    // var yuan_goodslist = that.data.goodslist;
-    // var num = that.data.count;
-    // num = num + 1;
-    // wx.request({
-    //   url: that.data.url + '/api/index/getHotGoods?page=' + num,
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   dataType: 'json',
-    //   success(res) {
-    //     if (res.data.code == 1) {
-    //       var data = res.data.hotList.data;
-    //       for (var i = 0; i < data.length; i++) {
-    //         var arr = data[i]['good_image'].split(',');
-    //         data[i]['good_image'] = arr[0];
-    //       }
-
-    //       that.setData({
-    //         goods: yuan_goods.concat(data)  //合并数组
-    //       })
-    //     }
-    //   }
-    // })
+    let that = this;
+    var num = that.data.count;
+    num = num + 1;
+    that.setData({
+      count:num
+    });
+    that.getGoodsList();
   },
 
   /**
@@ -130,87 +142,35 @@ Page({
   onShareAppMessage: function () {
     
   },
-  selectToggle:function(){
-    //获取option的显示状态
-    var nowShow = this.data.selectShow;
-    //创建动画
-    var animation = wx.createAnimation({
-      timingFunction: "ease"
-    })
-    
-    this.animationData = animation;
-    if(nowShow){
-      animation.rotate(0).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    }else{
-      animation.rotate(180).step();
-      this.setData({
-        animationData:animation.export()
-      })
-    }
-    this.setData({
-      selectShow: !nowShow,
-      saleFlag : false,
-      comText : true
-    })
-  },
-  setText:function(e){
-    var index = e.currentTarget.dataset.index;
-    var nowShow = this.data.selectShow;
-    var text = this.data.propArray[index];
-    this.setData({
-      nowText:text,
-      key: index,
-      selectShow: !nowShow
-    })
-    //创建动画
-    var animation = wx.createAnimation({
-      timingFunction: "ease"
-    })
-    this.animationData = animation;
-    if (nowShow) {
-      animation.rotate(0).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    } else {
-      animation.rotate(180).step();
-      this.setData({
-        animationData: animation.export()
-      })
-    }
-
-    //请求数据
+  getGoodsList(){
     let that = this;
+    var cat_id = that.data.cat_id;
+    var num = that.data.count;
+    var key = that.data.key;
+    var yuan_goodslist = that.data.goodslist;
     wx.request({
-      url: that.data.url + '/api/index/getGoodsList?index=' + index,
+      url: that.data.url + '/api/index/getGoodsList',
+      data:{id:cat_id,page:num,index:key},
+      method:'post',
       header: {
         'content-type': 'application/json' // 默认值
       },
       dataType: 'json',
       success(res) {
-        console.log(111)
-        console.log(res)
-        var data = res.data;
-        for (var i = 0; i < data.length; i++) {
-          var good_image = data[i]['good_image'].split(',');
-          data[i]['good_image'] = good_image[0];
+        var data = res.data.data;
+        var len = 10;
+        for (var i = 0; i <data.length;i++) {
+          var title = data[i]['title'];
+          data[i]['title'] = title.length <= len ? title : title.substr(0, len)+'...';
         }
-
-      
+        if(num>1){
+          data = yuan_goodslist.concat(data);
+        }
+        
         that.setData({
           goodslist: data
         })
       }
-    })
-  },
-  bindSale:function(){
-    this.setData({
-      saleFlag:true,
-      comText:false,
-      key:-1
     })
   }
 })

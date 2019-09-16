@@ -6,6 +6,7 @@ Page({
    */
   data: {
     url: app.globalData.url,  //获取全局变量
+    imgurl: '/static/uploads/',
     address:[],
     goodsInfo:[],
     totalprice:0
@@ -15,23 +16,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(111)
-    console.log(options)
     let that = this;
     wx.request({
       url: that.data.url +'/api/order/getConfirmOrder',
       method:'post',
       dataType:'json',
-      data: { goodsId: options.goodsId,skey:options.skey,num:options.num},
+      data: { goodsId: options.goodsId,num:options.num},
       success:function(res){
-        console.log(res)
         var data = res.data.goodsInfo;
-        var totalprice = 0;
+        var totalprice = '';
         for (var i = 0; i < data.length; i++) {
-          totalprice += data[i]['price'];
+          data[i]['evtoprice'] = Number(data[i]['price']) * Number(data[i]['num']).toFixed(2); 
+          totalprice += Number(data[i]['evtoprice']).toFixed(2);
         }
         that.setData({
-          address: res.data.address,
           goodsInfo:data,
           totalprice: totalprice
         })
@@ -43,6 +41,21 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    let that = this;
+    var skey = wx.getStorageSync('skey');
+    wx.request({
+      url: that.data.url + '/api/auth/getDefaultAddress',
+      method: 'post',
+      dataType: 'json',
+      data: { skey: skey},
+      success: function (res) {
+        if(res.data.code == 1){
+          that.setData({
+            address: res.data.info,
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -88,9 +101,32 @@ Page({
   },
   /* 获取收货地址 */
   getphone:function(e){
+    let that = this;
+    var skey = wx.getStorageSync('skey');
     wx.chooseAddress({
       success:function(res){
         console.log(res)
+        wx.request({
+          url: that.data.url + '/api/auth/addWxAddress',
+          data: { skey: skey, cityname: res.cityName, countyname: res.countyName, detailinfo: res.detailInfo,provincename:res.provinceName,telnumber:res.telNumber,username:res.userName},
+          method: 'post',
+          success(msg) {
+            console.log(msg)
+            if (msg.data.code == 1){
+              that.setData({
+                address: msg.data.address
+              });
+            }
+            if (msg.data.code == 0){
+              wx.showToast({
+                title: '服务器错误！',
+                icon:'none'
+              });
+              return;
+            }         
+          }
+        })
+
       }
     })
   }

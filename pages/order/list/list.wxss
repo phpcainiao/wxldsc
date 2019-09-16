@@ -1,6 +1,6 @@
 /* pages/order/list/list.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .orderOption{
   display: flex;

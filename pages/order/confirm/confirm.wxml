@@ -10,12 +10,12 @@
   <view class='firview'><text class='addinfo'>收货地址：</text>{{address.area}}{{address.address}}</view>
   <text class='arrow'></text>
 </view>
-<view class='main'>
+<view class='main' wx:for="{{goodsInfo}}" wx:key=''>
   <view class='shopInfo'>
     <text class='firText'>店铺：米氏孕婴童店</text>
   </view>
-  <view class='orderList' wx:for="{{goodsInfo}}" wx:key=''>
-    <image src='/images/attr01.jpg'></image>
+  <view class='orderList'>
+    <image src='{{url}}{{imgurl}}{{item.image}}'></image>
     <view class='title'>{{item.title}}</view>
     <view class='price'>
       <text class='black'>￥{{item.price}}</text>
@@ -26,7 +26,7 @@
     <text class='addinfo'>备注留言：</text>
     <input type='text' placeholder='建议输入内容与商家达成一致'/>
   </view>
-  <view class='sum'>共1件商品 合计 ￥{{item.price}}</view>
+  <view class='sum'>共{{item.num}}件商品 合计 ￥{{item.evtoprice}}</view>
 </view>
 <view class='bottom'>
   <view class='priceview'><text class='bottext'>实付款：</text><text class='totalprice'>￥ {{totalprice}}</text></view>

@@ -1,22 +1,29 @@
 <view class='content'>
   <!-- 搜索条件 -->
-  <view class='select'>
-    <view class='com-selectBox'>
-      <view class='com-sContent' bindtap='selectToggle'>
-        <view class='com-sTxt' style="{{comText ? 'color:#ff314b;' : 'color:#000'}}">{{nowText}}</view>
-        <image src="{{comText ? '/images/select01.jpg' : '/images/select02.jpg'}}"  class='com-sImg'  animation="{{animationData}}"></image>
+  <view id="swiper-tab">
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">{{nowText}}
+        <i></i>
       </view>
-      <view class='com-sList' wx:if="{{selectShow}}">
-        <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='' class='com-sItem' bindtap='setText' style="{{index == key ? 'color:#ff314b' : 'color: #000'}}">{{item}}</view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">销量
       </view>
     </view>
-    <!-- 销量 -->
-    <view class='saleNum' bindtap='bindSale' style="{{saleFlag ? 'color:#ff314b' : 'color:#000'}}">销量</view>
+
+    <swiper current="{{currentTab}}" style='display:{{displays}}'>
+      <swiper-item>
+        <view class="nav bc_white">
+          <view class="{{selected?'red':'default'}}" bindtap="selected">综合</view>
+          <view class="{{selected1?'red':'default'}}" bindtap="selected1">价格升高</view>
+          <view class="{{selected2?'red':'default'}}" bindtap="selected2">价格降低</view>
+            </view>
+      </swiper-item>
+    </swiper>
   </view>
+
   <!-- 列表 -->
   <view class='main'>
     <view class='main-goods' wx:for="{{goodslist}}" wx:key="">
-        <image src='{{url}}{{imgurl}}{{item.good_image}}' class='avator'/>
+        <image src='{{url}}{{imgurl}}{{item.image}}' class='avator'/>
         <text class='title'>{{item.title}}</text>
         <view>
           <text class='price'>￥{{item.price}}</text>

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     nickname: '点击登录',
+    flag:true,
     avatar: '/images/avatar.jpg',
     detail:[
       { src:'/images/wfk.png',text:'待付款'},
@@ -19,8 +20,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      sidebarHeight: getApp().screenHeight
+    let that = this;
+    var flag = true;
+    if(that.data.nickname != '点击登录'){
+      flag = false;
+    }
+    that.setData({
+      sidebarHeight: getApp().screenHeight,
+      flag:flag
     })
     
   },

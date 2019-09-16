@@ -1,6 +1,6 @@
 /* pages/cart/cart.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .carts-list{
   margin: 30rpx;

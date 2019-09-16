@@ -1,6 +1,6 @@
 /* pages/history/history.wxss */
 page{
-  background: #eee;
+  background: #f7f7fa;
 }
 .listBox{
   display: flex;

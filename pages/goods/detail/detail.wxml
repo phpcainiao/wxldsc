@@ -11,7 +11,7 @@
   <text class='title'>{{goods.title}}</text>
 </view>
 <view class='summary'>
-  <text class='attr'>选择 颜色 尺码</text>
+  <text class='attr' bindtap='bindtkattr'>{{cate}}</text>
 </view>
 <view class="detail">
 	<image wx:for="{{goods.images}}" src="{{url}}{{item}}" wx:key=""/>
@@ -23,12 +23,12 @@
       <contact-button class="contact-button" size="22" />
       <text class="button-text">联系客服</text> 
     </view>
-    <view class='button-group' bindtap='showCart' data-index="cart">
+    <view class='button-group' bindtap='addCart'>
       <image src="../../../images/icon_cart.png" class="button-image"/>
       <text class='button-text'>加入购物车</text>
     </view>
   </view>
-  <button class="add-cart" bindtap="bindpay"  data-index="pay">立即支付</button>
+  <button class="add-cart" bindtap="bindpay">立即支付</button>
 </view>
 <!-- 弹出框 -->
 <view class='tck' style='display:{{displayStatus}};'>
@@ -66,7 +66,7 @@
     </view>
     <!-- 确定按钮 -->
     <view class='bottom-qd'>
-      <view class='qd' bindtap='qdbutton'>确定</view>
+      <view class='qd' bindtap='closeCurrentPage'>确定</view>
     </view>
   </view>
 </view>
